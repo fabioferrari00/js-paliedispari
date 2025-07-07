@@ -21,3 +21,14 @@ if (check) {
 
 }
 
+
+//funzione per generare un numero random tra N e N
+function generateRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const userCheck = prompt('Pari o dispari?')
+const userNumber = parseInt(prompt('Inserisci un numero da 1 a 5'))
+const pcNumber = generateRandomNumber(1, 5);
+
+console.log(`usercheck ${userCheck}, user number ${userNumber}, pc number ${pcNumber}`)
