@@ -1,14 +1,11 @@
 function isPalindrome(text) {
-
   const reversedWord = text.split('').reverse().join('');
-  let result = false;
 
   if (reversedWord === text) {
-    result = true;
+    return true;
+  } else {
+    return false;
   }
-
-  return result;
-
 }
 
 const userWord = prompt('Inserisci una parola per verificare se è palindroma');
@@ -38,18 +35,41 @@ function checkEvenOrOdd(number) {
 }
 
 
-const userCheck = prompt('Pari o dispari?')
-const userNumber = parseInt(prompt('Inserisci un numero da 1 a 5'))
+const userCheck = prompt('Pari o dispari?');
+const userNumber = parseInt(prompt('Inserisci un numero da 1 a 5'));
 const pcNumber = generateRandomNumber(1, 5);
-
-console.log(`usercheck ${userCheck}, user number ${userNumber}, pc number ${pcNumber}`)
-
 const sumNumbers = pcNumber + userNumber;
+let pcPoints = 0;
+let userPoints = 0;
+
+
+console.log(`Hai scelto: ${userCheck}, Il tuo numero è: ${userNumber},Il numero del pc è: ${pcNumber}`);
 
 if (checkEvenOrOdd(sumNumbers) === `pari`) {
-  console.log(`La somma: ${sumNumbers} è pari`)
+  console.log(`La somma: ${sumNumbers} è pari`);
 } else {
-  console.log(`La somma: ${sumNumbers} è dispari`)
+  console.log(`La somma: ${sumNumbers} è dispari`);
 }
 
+if (checkEvenOrOdd(sumNumbers) === userCheck) {
+  userPoints++;
+} else {
+  pcPoints++;
+}
+
+if (userNumber > pcNumber) {
+  userPoints++;
+} else if (userNumber < pcNumber) {
+  pcPoints++;
+} else {
+  console.log(`Tu e il pc avete inserito lo stesso numero`);
+}
+
+if (pcPoints < userPoints) {
+  console.log(`L'utente ha ottenuto ${userPoints} punti. Il pc ha ottenuto ${pcPoints} punti. Hai vinto`);
+} else if (pcPoints > userPoints) {
+  console.log(`L'utente ha ottenuto ${userPoints} punti. Il pc ha ottenuto ${pcPoints} punti. Hai perso`);
+} else {
+  console.log(`L'utente ha ottenuto ${userPoints} punti. Il pc ha ottenuto ${pcPoints} punti. Hai pareggiato`);
+}
 
